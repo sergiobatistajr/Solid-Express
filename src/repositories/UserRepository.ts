@@ -1,6 +1,6 @@
 import { User } from "../models/User"
 
-export class UserRepository {
+class UserRepository {
   private users: User[]
 
   constructor() {
@@ -19,3 +19,5 @@ export class UserRepository {
     return this.users.find((user) => user.id === id)
   }
 }
+
+export default new UserRepository()
