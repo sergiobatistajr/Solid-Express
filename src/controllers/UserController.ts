@@ -1,12 +1,9 @@
 import { Request, Response } from "express"
-import { UserService } from "../services/UserService"
+import UserService from "../services/UserService"
 import AuthService from "../services/AuthService"
 
-export class UserController {
-  private userService: UserService
-  constructor() {
-    this.userService = new UserService()
-  }
+class UserController {
+  constructor(private userService: typeof UserService) {}
 
   postLogin(req: Request, res: Response) {
     const { email, password } = req.body
@@ -26,3 +23,5 @@ export class UserController {
     res.status(200).end()
   }
 }
+
+export default new UserController(UserService)
