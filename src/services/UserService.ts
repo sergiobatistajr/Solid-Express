@@ -30,7 +30,7 @@ export class UserService {
       throw new Error("Senha inválida")
     }
     return {
-      email: user.email,
+      id: user.id,
     }
   }
 }
