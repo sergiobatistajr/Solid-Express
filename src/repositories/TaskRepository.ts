@@ -1,6 +1,6 @@
 import { Task } from "../models/Taks"
 
-export class TaskRepository {
+class TaskRepository {
   private tasks: Task[]
   constructor() {
     this.tasks = []
@@ -21,3 +21,4 @@ export class TaskRepository {
     return this.tasks
   }
 }
+export default new TaskRepository()
