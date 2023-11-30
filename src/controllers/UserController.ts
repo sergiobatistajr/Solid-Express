@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import { UserService } from "../services/UserService"
+import AuthService from "../services/AuthService"
 
 export class UserController {
   private userService: UserService
@@ -10,8 +11,9 @@ export class UserController {
   postLogin(req: Request, res: Response) {
     const { email, password } = req.body
     try {
-      const output = this.userService.loginUser({ email, password })
-      res.status(200).send(output).end()
+      const id = this.userService.loginUser({ email, password })
+      const token = AuthService.generateToken(id)
+      res.status(200).send(token).end()
     } catch (error) {
       if (error instanceof Error) {
         res.status(401).send(error.message).end()
