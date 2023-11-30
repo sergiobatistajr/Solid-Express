@@ -1,12 +1,9 @@
 import { randomUUID } from "node:crypto"
-import { UserRepository } from "../repositories/UserRepository"
+import UserRepository from "../repositories/UserRepository"
 import { User } from "../models/User"
 
-export class UserService {
-  private userRepository: UserRepository
-  constructor() {
-    this.userRepository = new UserRepository()
-  }
+class UserService {
+  constructor(private readonly userRepository: typeof UserRepository) {}
 
   registerUser({
     name,
@@ -34,3 +31,5 @@ export class UserService {
     }
   }
 }
+
+export default new UserService(UserRepository)
