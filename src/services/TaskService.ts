@@ -1,12 +1,9 @@
 import { randomUUID } from "node:crypto"
-import { TaskRepository } from "../repositories/TaskRepository"
+import TaskRepository from "../repositories/TaskRepository"
 import { Task } from "../models/Taks"
 
-export class TaskService {
-  private tasksRepository: TaskRepository
-  constructor() {
-    this.tasksRepository = new TaskRepository()
-  }
+class TaskService {
+  constructor(private tasksRepository: typeof TaskRepository) {}
 
   addTask(name: string) {
     const task = new Task(randomUUID(), name, false)
@@ -30,3 +27,5 @@ export class TaskService {
     }
   }
 }
+
+export default new TaskService(TaskRepository)
