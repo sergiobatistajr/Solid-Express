@@ -1,11 +1,8 @@
 import { Request, Response } from "express"
-import { TaskService } from "../services/TaskService"
+import TaskService from "../services/TaskService"
 
-export class TaskController {
-  private taskService: TaskService
-  constructor() {
-    this.taskService = new TaskService()
-  }
+class TaskController {
+  constructor(private readonly taskService: typeof TaskService) {}
 
   getTasks(req: Request, res: Response) {
     const tasks = this.taskService.listTasks()
@@ -24,3 +21,4 @@ export class TaskController {
     res.status(200).send()
   }
 }
+export default new TaskController(TaskService)
