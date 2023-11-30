@@ -1,0 +1,29 @@
+POST http://localhost:3000/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "sergio@gmail.com",
+  "password": "12345678"
+}
+###
+POST http://localhost:3000/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Sérgio Batista",
+  "email": "sergio@gmail.com",
+  "password": "12345678"
+}
+###
+POST http://localhost:3000/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Nova tarefa",
+  "completed": false
+}
+###
+GET http://localhost:3000/tasks HTTP/1.1
+###
+PUT http://localhost:3000/tasks/e23d2b62-e63d-44e3-bc34-6e8ed4e0b26a HTTP/1.1
+
