@@ -3,7 +3,6 @@ import TaskController from "./controllers/TaskController"
 import UserController from "./controllers/UserController"
 import { authMiddleware as auth } from "./middleware"
 const app = express()
-// Middleware para parsear o corpo das requisições
 app.use(express.json())
 
 // Rotas
